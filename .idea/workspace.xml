@@ -337,7 +337,21 @@
       <option name="project" value="LOCAL" />
       <updated>1518719361029</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="evernote merge with master">
+      <created>1518719486545</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1518719486545</updated>
+    </task>
+    <task id="LOCAL-00006" summary="evernote merge with master">
+      <created>1518719720607</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1518719720607</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -401,7 +415,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="yet another hello" />
     <MESSAGE value="evernote first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="evernote first commit" />
+    <MESSAGE value="evernote merge with master" />
+    <option name="LAST_COMMIT_MESSAGE" value="evernote merge with master" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
