@@ -1,15 +1,12 @@
 package org.junittst;
 
-import junit.framework.Assert;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
 
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class TestCase1 {
 
-    @Before
     public void beforeTests(){
         System.out.println("Before 1");
     }
@@ -19,7 +16,6 @@ public class TestCase1 {
         System.out.println("Hello world 1");
     }
 
-    @After
     public void afterTests(){
         System.out.println("After 1");
     }
