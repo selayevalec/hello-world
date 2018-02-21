@@ -1,12 +1,13 @@
 package org.junittst;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class TestCase3 {
 
-    @Before
+
     public void beforeTests(){
         System.out.println("Before 3");
     }
@@ -16,7 +17,7 @@ public class TestCase3 {
         System.out.println("Hello world 3");
     }
 
-    @After
+
     public void afterTests(){
         System.out.println("After 3");
     }
