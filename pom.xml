@@ -21,24 +21,34 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-surefire-provider</artifactId>
             <version>1.0.1</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.0.1</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>1.0.1</version>
+            <version>1.1.0</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
             <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.1.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -55,11 +65,11 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                       <!--
-                       <include>**/Test*.java</include>
-                       -->
                         <include>**/Test*.java</include>
                     </includes>
+                    <properties>
+                        <includeTags>Hello</includeTags>
+                    </properties>
                 </configuration>
                 <dependencies>
                     <dependency>
