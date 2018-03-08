@@ -5,26 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.selyale.seleniumtst.evernote.beans.LoginPageBean;
 
 public class LoginPage {
-
-    public LoginPageBean login =
-            new LoginPageBean(
-                    "selyaev.alec@gmail.com",
-                    "Seisp1332",
-                    true);
+    private final WebDriver driver;
 
     By usernameLocator = By.id("password");
     By passwordLocator = By.id("username");
     By rememberMeLocator = By.id("rememberMe");
     By loginButtonLocator = By.id("login");
 
-    private final WebDriver driver;
-
-
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        if (!"Login".equals(driver.getTitle())) {
-            throw new IllegalStateException("This is not the login page");
-        }
+        System.out.println(driver.getTitle());
     }
 
     public LoginPage typeUsername(String username) {
@@ -43,15 +33,24 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage submitLoginExpectingFailure() {
-        driver.findElement(loginButtonLocator).submit();
-        return new LoginPage(driver);
-    }
-
     public HomePage loginAs(String username, String password) {
         typeUsername(username);
         typePassword(password);
         return submitLogin();
+    }
+
+    public LoginPage enableRememberMe(){
+        if (!driver.findElement(rememberMeLocator).isEnabled());{
+            driver.findElement(rememberMeLocator).click();
+        }
+        return this;
+    }
+
+    public LoginPage disableRememberMe(){
+        if (driver.findElement(rememberMeLocator).isEnabled());{
+            driver.findElement(rememberMeLocator).click();
+        }
+        return this;
     }
 
 }
