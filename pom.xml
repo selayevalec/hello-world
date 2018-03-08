@@ -7,16 +7,26 @@
     <groupId>org.homecorporated</groupId>
     <artifactId>learn_and_practice</artifactId>
     <version>3.0-SNAPSHOT</version>
-
-
     <dependencies>
-        <!--
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-firefox-driver</artifactId>
-                <version>3.9.1</version>
-            </dependency>
-     -->
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-ie-driver</artifactId>
+            <version>3.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.10.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-surefire-provider</artifactId>
@@ -68,7 +78,8 @@
                         <include>**/Test*.java</include>
                     </includes>
                     <properties>
-                        <includeTags>Hello</includeTags>
+                        <!--<includeTags>!Tag</includeTags>-->
+                        <!--<excludeTags>Hello</excludeTags>-->
                     </properties>
                 </configuration>
                 <dependencies>
