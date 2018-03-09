@@ -1,4 +1,4 @@
-package org.selyale.seleniumtst.evernote.common;
+package org.selyale.evernote.common;
 
 public enum LocatorType {
     ID,

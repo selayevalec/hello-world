@@ -1,4 +1,4 @@
-package org.selyale.seleniumtst.evernote.beans;
+package org.selyale.evernote.beans;
 
 public class LoginPageBean {
     String userName;
