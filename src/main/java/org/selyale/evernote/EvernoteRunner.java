@@ -1,50 +1,48 @@
 package org.selyale.evernote;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.selyale.evernote.pageobjects.LoginPage;
 import org.apache.log4j.Logger;
-import org.selyale.evernote.util.Waiters;
-
-import java.util.concurrent.TimeUnit;
+import org.selyale.evernote.util.WebDriverSingleton;
 
 public class EvernoteRunner {
-    final static Logger logger = Logger.getLogger(EvernoteRunner.class);
+    private final static Logger logger = Logger.getLogger(EvernoteRunner.class);
 
-    public static void waitALittle() {
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException ie) {
-            logger.info("Exception while the timout");
-        }
+    public static void setProperties() {
+        System.setProperty("org.selyale.resources.root",
+                "C:\\Users\\User\\IdeaProjects\\hello-world\\resources");
+
+        System.setProperty("webdriver.chrome.driver",
+                System.getProperty("org.selyale.resources.root") + "\\chrome\\chromedriver.exe");
+
+        PropertyConfigurator.configure(System.getProperty("org.selyale.resources.root") + "\\log4j.properties");
     }
 
     public static void main(String[] args) {
-
-        System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\User\\IdeaProjects\\hello-world\\src\\main\\resources\\chrome\\chromedriver.exe"
-        );
-
+        setProperties();
         logger.info("START");
 
-        WebDriver driver = new ChromeDriver();
-        Waiters.implicitlyWait(driver,3);
-        Waiters.pageLoadTimeout(driver, 5);
-        driver.manage().window().maximize();
-        driver.get("https://www.evernote.com/Login.action");
+        final WebDriver driver;
 
-        logger.info("Login page is created");
+        try {
+            driver = WebDriverSingleton.getChromeWebDriver();
+            driver.manage().window().maximize();
+            driver.get("https://www.evernote.com/Login.action");
 
-        new LoginPage(driver)
-                .typeUsername("selyaev.alec@gmail.com")
-                .clickSubmitIfPasswordNotShowed()
-                .typePassword("13evernote32")
-                .submitLogin();
+            logger.info("Login page is created");
 
-        driver.close();
-        driver.quit();
+            new LoginPage(driver)
+                    .login("selyaev.alec@gmail.com", "13evernote32");
+
+            driver.close();
+            driver.quit();
+        } catch (Exception e) {
+            logger.fatal(e.getStackTrace());
+        } finally {
+            }
 
         logger.info("FINISH");
+        }
     }
 
-}
