@@ -3,22 +3,32 @@ package org.selyale.evernote.pageobjects;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.selyale.evernote.util.Waiters;
 
 public class LoginPage {
     private final Logger logger = Logger.getLogger(LoginPage.class);
     private final WebDriver driver;
 
-    private final By usernameLocator = By.id("username");
+    @FindBy(how = How.ID, using="username") WebElement usernameLocator;
+    //private final By usernameLocator = By.id("username");
+
     private final By passwordLocator = By.id("password");
+
     private final By loginButtonLocator = By.id("loginButton");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public LoginPage typeUsername(String username) {
-        driver.findElement(usernameLocator).sendKeys(username);
+        //driver.findElement(usernameLocator).sendKeys(username);
+        logger.info("username:" + getUsernameLocator().toString());
+        usernameLocator.sendKeys(username);
         logger.info("username:" + username);
         return this;
     }
@@ -50,11 +60,15 @@ public class LoginPage {
 
     public HomePage login(String username, String password){
         new LoginPage(driver)
-                .typeUsername("username")
+                .typeUsername(username)
                 .clickSubmitIfPasswordNotShowed()
-                .typePassword("password")
+                .typePassword(password)
                 .submitLogin();
 
         return new HomePage(driver);
+    }
+
+    public WebElement getUsernameLocator() {
+        return usernameLocator;
     }
 }
