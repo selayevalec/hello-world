@@ -1,8 +1,6 @@
 package org.selyale.evernote;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.selyale.evernote.pageobjects.LoginPage;
 import org.apache.log4j.Logger;
 import org.selyale.evernote.util.SetProperties;
