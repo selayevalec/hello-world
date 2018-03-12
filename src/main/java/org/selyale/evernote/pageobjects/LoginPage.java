@@ -13,36 +13,40 @@ public class LoginPage {
     private final Logger logger = Logger.getLogger(LoginPage.class);
     private final WebDriver driver;
 
-    @FindBy(how = How.ID, using="username") WebElement usernameLocator;
+    @FindBy(how = How.ID, using = "username")
+    private WebElement usernameLocator;
     //private final By usernameLocator = By.id("username");
 
-    private final By passwordLocator = By.id("password");
+    @FindBy(how = How.ID, using = "password")
+    private WebElement passwordLocator;
+    //private final By passwordLocator = By.id("password");
 
-    private final By loginButtonLocator = By.id("loginButton");
+    @FindBy(how = How.ID, using = "loginButton")
+    private WebElement loginButtonLocator;
+    //private final By loginButtonLocator = By.id("loginButton");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public LoginPage typeUsername(String username) {
         //driver.findElement(usernameLocator).sendKeys(username);
-        logger.info("username:" + getUsernameLocator().toString());
         usernameLocator.sendKeys(username);
         logger.info("username:" + username);
         return this;
     }
 
     public HomePage submitLogin() {
-        driver.findElement(loginButtonLocator).submit();
+        loginButtonLocator.submit();
         logger.info("Login is submitted");
         return new HomePage(driver);
     }
 
     public LoginPage clickSubmitIfPasswordNotShowed() {
-        if (!driver.findElement(passwordLocator).isDisplayed()) {
-            driver.findElement(loginButtonLocator).submit();
-            Waiters.waitUntilDisplayedBy(driver,passwordLocator,3);
+        if (!passwordLocator.isDisplayed()) {
+            passwordLocator.submit();
+            Waiters.waitUntilPresenceOfWebElement(driver, passwordLocator, 3);
             logger.info("Password should be shown now");
         } else {
             logger.info("Password was shown already");
@@ -52,13 +56,13 @@ public class LoginPage {
     }
 
     public LoginPage typePassword(String password) {
-        logger.info("Password is shown:"+driver.findElement(passwordLocator).isDisplayed());
-        driver.findElement(passwordLocator).sendKeys(password);
+        logger.info("Password is shown:" + passwordLocator.isDisplayed());
+        passwordLocator.sendKeys(password);
         logger.info("password:xxxxx");
         return this;
     }
 
-    public HomePage login(String username, String password){
+    public HomePage login(String username, String password) {
         new LoginPage(driver)
                 .typeUsername(username)
                 .clickSubmitIfPasswordNotShowed()
