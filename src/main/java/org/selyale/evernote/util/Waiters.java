@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public final class Waiters {
 
-    public static void waitUntilPresenceOfWebEleKent(WebDriver driver, WebElement element, int sec) {
+    public static void waitUntilPresenceOfWebElement(WebDriver driver, WebElement element, int sec) {
         (new WebDriverWait(driver, sec))
                 .until(ExpectedConditions.visibilityOf(element));
     }

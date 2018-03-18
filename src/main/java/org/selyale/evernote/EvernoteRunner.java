@@ -1,7 +1,7 @@
 package org.selyale.evernote;
 
 import org.openqa.selenium.WebDriver;
-import org.selyale.evernote.pageobjects.LoginPage;
+import org.selyale.evernote.pageobjects.login.LoginPage;
 import org.apache.log4j.Logger;
 import org.selyale.evernote.util.SetProperties;
 import org.selyale.evernote.util.WebDriverSingleton;

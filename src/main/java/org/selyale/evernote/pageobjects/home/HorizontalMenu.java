@@ -1,4 +1,4 @@
-package org.selyale.evernote.pageobjects;
+package org.selyale.evernote.pageobjects.home;
 
 import org.openqa.selenium.WebDriver;
 

@@ -1,4 +1,4 @@
-package org.selyale.evernote.pageobjects;
+package org.selyale.evernote.pageobjects.login;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.selyale.evernote.pageobjects.home.HomePage;
 import org.selyale.evernote.util.Waiters;
 
 public class LoginPage {
